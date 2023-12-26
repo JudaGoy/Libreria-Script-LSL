@@ -1,0 +1,34 @@
+integer isLightTurnedOn;
+integer linkPrimHijo = 2;
+
+default
+{
+    touch_start(integer total_number)
+    {
+//      toggle isLightTurnedOn between TRUE and FALSE
+        isLightTurnedOn = !isLightTurnedOn;
+
+        if (isLightTurnedOn)
+
+        {
+             llSetLinkPrimitiveParams(linkPrimHijo, [ PRIM_GLOW, 1, 0,
+                
+                  PRIM_FULLBRIGHT, 1, FALSE ] ) ;
+                  
+            llSetPrimitiveParams([ PRIM_POINT_LIGHT, FALSE, ZERO_VECTOR, 1.0, 10.0, 0.6] ) ;
+           
+               
+        }
+        else
+        {
+            vector COLOR_ORANGE  = <1.000, 0.522, 0.106>;
+            
+            llSetLinkPrimitiveParams(linkPrimHijo, [ PRIM_GLOW, 1, .3,
+                 PRIM_FULLBRIGHT, 1, TRUE ] ) ;
+            
+      llSetPrimitiveParams([PRIM_POINT_LIGHT, TRUE, COLOR_ORANGE, 1.0, 10.0, 0.6] ) ;
+      
+                
+        }
+    }
+}
